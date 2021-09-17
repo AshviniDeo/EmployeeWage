@@ -1,6 +1,13 @@
 package assignment8;
 
 public class EmployeWage_Refactor {
+	public void Attendence() {
+		if (Math.floor(Math.random()*10)%2 == 0) {
+			int is_Present;
+		}else {
+			int is_Absent;
+		}
+	}
 	public int SwtchCase(int check) {
 		int workHour = 0;
 		switch (check){
@@ -9,7 +16,12 @@ public class EmployeWage_Refactor {
             break;
         case 1 :
             workHour = workHour + 8;
+            break;
+        case 2 :
+        	workHour = 0;
+        	break;
         default:
+        	break;
     }
     return workHour;
 	}
@@ -22,7 +34,7 @@ public class EmployeWage_Refactor {
 	}
 	public int Check() {
 		 
-		 int check = (int) Math.floor(Math.random() * 2);
+		 int check = (int) Math.floor(Math.random() * 3);
          if (check == 0){
              System.out.println("PartTime Employee");
          }else {
@@ -43,7 +55,7 @@ public class EmployeWage_Refactor {
          int workingDay = 0;
          int workingHour = 0;
         EmployeWage_Refactor obj = new EmployeWage_Refactor();
-       int workHr = obj.SwtchCase( obj.Check());
+       int workHr = obj.SwtchCase( obj.Check()*obj.Attendence());
         obj.WorkingHour(workingHour, totalWorkHour, workingDay, totalWorkingDay, totalWorkHour);
         obj.Calculate(wagePrHour, workHr, totalWorkHour);
              
