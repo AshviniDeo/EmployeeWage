@@ -32,7 +32,7 @@ public class EmployeWage_Refactor {
          }
 		 return workingHour;
 	}
-	public int Check() {
+	public int Check(int attendence) {
 		 
 		 int check = (int) Math.floor(Math.random() * 3);
          if (check == 0){
@@ -40,7 +40,7 @@ public class EmployeWage_Refactor {
          }else {
              System.out.println("FullTime Employee");
          }
-         return check;
+         return check * attendence;
 	}
 	public void Calculate(int wagePrHour,int workHour,int totalWorkHour) {
 		int employedailyWage = (wagePrHour * workHour);
@@ -55,7 +55,7 @@ public class EmployeWage_Refactor {
          int workingDay = 0;
          int workingHour = 0;
         EmployeWage_Refactor obj = new EmployeWage_Refactor();
-       int workHr = obj.SwtchCase( obj.Check()*obj.Attendence());
+       int workHr = obj.SwtchCase( obj.Check(obj.Attendence()));
         obj.WorkingHour(workingHour, totalWorkHour, workingDay, totalWorkingDay, totalWorkHour);
         obj.Calculate(wagePrHour, workHr, totalWorkHour);
              
