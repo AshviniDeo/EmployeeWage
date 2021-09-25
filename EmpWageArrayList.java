@@ -7,10 +7,17 @@ import java.util.Scanner;
 public class EmpWageArrayList implements EmployeWageBuilder {
 	String company;
 	int empWage;
+	int empDailyWage;
+
+	
 
 	@Override
 	public String toString() {
-		return "EmpWageArrayList [company=" + company + ", empWage=" + empWage + "]";
+		return "EmpWageArrayList [company=" + company + ", empWage=" + empWage + ", empDailyWage=" + empDailyWage + "]";
+	}
+
+	public void setEmpDailyWage(int empDailyWage) {
+		this.empDailyWage = empDailyWage;
 	}
 
 	public void setCompany(String company) {
@@ -21,12 +28,15 @@ public class EmpWageArrayList implements EmployeWageBuilder {
 		this.empWage = empWage;
 	}
 
-	public EmpWageArrayList(String company, int empWage) {
+	
+	
+	public EmpWageArrayList(String company, int empWage, int empDailyWage) {
 		super();
 		this.company = company;
 		this.empWage = empWage;
+		this.empDailyWage = empDailyWage;
 	}
-	
+
 	public static int attendence() {
 		int attendence = (int) Math.floor(Math.random() * 10) % 2;
 		if (attendence == 0) {
@@ -68,6 +78,11 @@ public class EmpWageArrayList implements EmployeWageBuilder {
 		int check = (int) Math.floor(Math.random() * 2);
 
 		return check * attendence;
+	}
+	
+	public static int employeDailyWage(int wagePrHour, int workHour) {
+		int employedailyWage = (wagePrHour * workHour);
+		return employedailyWage;
 	}
 
 	public static int calculate(int wagePrHour, int workHour, int totalWorkHour) {
@@ -114,9 +129,11 @@ public class EmpWageArrayList implements EmployeWageBuilder {
 
 				int workHr = switchCase(check(attendence()));
 				int empWage = calculate(wagePrHour, workHr, totalWorkHour);
-				CompanyEmpWage emp = new CompanyEmpWage(company, empWage);
+				int empDaily = employeDailyWage(wagePrHour,workHr);
+				EmpWageArrayList emp = new EmpWageArrayList(company, empWage,empDaily);
 				emp.setCompany(company);
 				emp.setEmpWage(empWage);
+			
 				build.add(emp);
 
 
